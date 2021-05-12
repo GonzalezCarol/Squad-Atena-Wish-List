@@ -5,15 +5,11 @@ import com.squadatena.wishlist.mapper.ProductMapper;
 import com.squadatena.wishlist.model.Product;
 import com.squadatena.wishlist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
-//Silvia
+
 @RequestMapping("/product")
 @RestController
 public class ProductController {
