@@ -1,1 +1,0 @@
-insert into product(sku, name, price, quantity, photo) values (123, 'Geladeira', 32.9, 3, 'photo');
