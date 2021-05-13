@@ -5,14 +5,10 @@ import com.squadatena.wishlist.mapper.ProductMapper;
 import com.squadatena.wishlist.model.Product;
 import com.squadatena.wishlist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequestMapping("/product")
 @RestController
@@ -26,34 +22,29 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductDTO save(@RequestBody ProductDTO productDTO) {
-        Product product = productMapper.asEntity(productDTO);
-        return productMapper.asDTO(productService.save(product));
+    public Product save(@RequestBody Product product) {
+        return productService.save(product);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ProductDTO findById(@PathVariable("id") Long id) {
-        Product product = productService.findById(id).orElse(null);
-        return productMapper.asDTO(product);
-    }
+    public Product findById(@PathVariable("id") Long id) {
+        return productService.findById(id).orElse(null);}
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") Long id) {
-        productService.deleteById(id);
-    }
+        productService.deleteById(id); }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> list() {
-        return productMapper.asDTOList(productService.findAll());
+    public List<Product> list() {
+        return productService.findAll();
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ProductDTO update(@RequestBody ProductDTO productDTO, @PathVariable("id") Long id) {
-        Product product = productMapper.asEntity(productDTO);
-        return productMapper.asDTO(productService.update(product, id));
+    public Product update(@RequestBody Product product, @PathVariable("id") Long id) {
+        return product;
     }
 }
