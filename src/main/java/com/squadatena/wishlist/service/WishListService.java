@@ -35,6 +35,11 @@ public class WishListService {
         wishListRepository.delete(wishList);
     }
 
+    // Save or update a wishlist
+    public WishList saveUpdateProduct(WishList wishList) {
+        return wishListRepository.save(wishList);
+    }
+
 
 
 }
