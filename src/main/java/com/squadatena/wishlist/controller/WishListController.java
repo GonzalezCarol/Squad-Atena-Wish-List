@@ -7,6 +7,8 @@ import com.squadatena.wishlist.service.ClientService;
 import com.squadatena.wishlist.service.ProductService;
 import com.squadatena.wishlist.service.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,22 +24,25 @@ public class WishListController {
     @Autowired
     private WishListService wishlistService;
 
-    @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private ClientService clientService;
-
     // Find a wishlist from a given client Id
     @GetMapping("/{id_cliente}")
-    public Optional<WishList> index(@PathVariable Long id_cliente) {
-        return wishlistService.wishListByCId(id_cliente);
+    public ResponseEntity<?> index(@PathVariable Long id_cliente) {
+        try {
+            return new ResponseEntity<>(wishlistService.wishListByCId(id_cliente), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     // Add a product in a given client wishlist
     @PostMapping("/add/{id_cliente}")
-    public WishList addProductWishlist(@RequestBody Long id_product, @PathVariable Long id_cliente) {
-        return wishlistService.addProduct(id_cliente, id_product);
+    public ResponseEntity<WishList> addProductWishlist(@RequestBody Long id_product, @PathVariable Long id_cliente) {
+        try {
+            WishList wishListAnwser = wishlistService.addProduct(id_cliente, id_product);
+            return new ResponseEntity<>(wishListAnwser, HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     // Delete a product in a given client wishlist
