@@ -1,6 +1,7 @@
 package com.squadatena.wishlist.repository;
 
 
+import com.squadatena.wishlist.entity.Product;
 import com.squadatena.wishlist.entity.WishList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -17,6 +18,7 @@ public interface WishListRepository extends JpaRepository<WishList,Long> {
 
 //    @Query(value = "select u from wishlist u where u.idclient = ?1")
     Optional<WishList> findByClientId (Long id);
+
 
 
 //

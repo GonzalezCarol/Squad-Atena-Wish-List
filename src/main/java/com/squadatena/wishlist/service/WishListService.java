@@ -25,33 +25,16 @@ public class WishListService {
         return wishListRepository.findByClientId(id);
     }
 
-    // Add a product in a given wishlist
+    // Add a product in a given client wishlist
     public WishList addProduct(WishList wishList) {
-
         return wishListRepository.save(wishList);
     }
 
+    // Delete a product in a given client wishlist
+    public void deleteProduct(WishList wishList) {
+        wishListRepository.delete(wishList);
+    }
 
-//    public void saveProductWishList (WishList wishlist){
-//        wishlistrepository.save(wishlist);}
-//
-//    public WishList getWishListToAdd (WishList wishlist, Long id, Long idcliente){
-//
-////        wishlist.setName(product.getName());
-////        wishlist.setPrice(product.getPrice());
-////        wishlist.setColor(product.getColor());
-////        wishlist.setDescription(product.getDescription());
-//        wishlist.setClient(clientrepository.findById(idcliente).get());
-//        wishlist.setProduct(productRepository.findById(id).get());
-////        wishlist.setRate(product.getRate());
-////        wishlist.setWeight(product.getWeight());
-//
-//        return wishlist; }
-//
-//    public void wishListDelete(Long id, Long idclient) {
-//        wishlistrepository.deleteByIdAndIdclient(id, idclient); }
-//
-//    public WishList getWishListByName(String name, Long idclient) {
-//        return wishlistrepository.findByNameAndIdclient(name.toLowerCase(Locale.ROOT), idclient); }
+
 
 }
