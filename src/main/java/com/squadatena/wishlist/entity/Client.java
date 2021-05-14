@@ -1,11 +1,9 @@
 package com.squadatena.wishlist.entity;
 
-import com.sun.istack.NotNull;
-import com.sun.istack.Nullable;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
+//Create a table called client with 4 columns
 @Entity
 @Table(name = "client")
 

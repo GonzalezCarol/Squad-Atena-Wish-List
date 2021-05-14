@@ -1,10 +1,10 @@
 package com.squadatena.wishlist.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+//Create a table called product with 8 columns
 @Entity
 @Table(name = "product")
 

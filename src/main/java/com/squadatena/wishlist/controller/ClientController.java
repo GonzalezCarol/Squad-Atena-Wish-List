@@ -21,7 +21,7 @@ public class ClientController {
         return clientService.clientList();
     }
 
-    // Find a client of a given id
+    // Find a client by a given id
     @GetMapping(value = "/{id}")
     public Optional<Client> selectByID(@PathVariable Long id) {
         return clientService.searchById(id);
@@ -34,7 +34,7 @@ public class ClientController {
         return client;
     }
 
-    // Update a client of a given id
+    // Update a client by a given id
     @PutMapping(value = "/{id}")
     public Client updateAClient (@PathVariable Long id, @RequestBody Client client){
         Optional<Client> clientAfterSearch = clientService.searchById(id);
@@ -50,7 +50,6 @@ public class ClientController {
     public Long numberOfClients(){
         return clientService.clientQuantity();
     }
-
 
 }
 

@@ -3,6 +3,9 @@ package com.squadatena.wishlist.entity;
 import javax.persistence.*;
 import java.util.List;
 
+/* Create a table called wishlist with 3 columns where client has a relation one to one with the table clients and products
+has a relation one to many with the table products */
+
 @Entity
 @Table(name = "wishlist")
 
@@ -23,5 +26,4 @@ public class WishList{
     public void setClient(Client client) { this.client = client; }
     public List<Product> getProducts() { return products; }
     public void setProducts(List<Product> products) { this.products = products; }
-
 }
