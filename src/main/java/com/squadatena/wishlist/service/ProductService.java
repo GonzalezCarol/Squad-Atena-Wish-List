@@ -1,7 +1,7 @@
 package com.squadatena.wishlist.service;
 
 
-import com.squadatena.wishlist.model.Product;
+import com.squadatena.wishlist.entity.Product;
 import com.squadatena.wishlist.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,27 +14,24 @@ import java.util.Optional;
 public class ProductService{
 
     @Autowired
-    ProductRepository repository;
+    ProductRepository productRepository;
 
-    public Product save(Product entity) {
-
-        return repository.save(entity);
-    }
+    public Product save(Product entity) { return productRepository.save(entity); }
 
     public List<Product> save(List<Product> entities) {
-        return (List<Product>) repository.saveAll(entities);
+        return (List<Product>) productRepository.saveAll(entities);
     }
 
     public void deleteById(Long id) {
-        repository.deleteById(id);
+        productRepository.deleteById(id);
     }
 
     public Optional<Product> findById(Long id) {
-        return repository.findById(id);
+        return productRepository.findById(id);
     }
 
     public List<Product> findAll() {
-        return (List<Product>) repository.findAll();
+        return (List<Product>) productRepository.findAll();
     }
 
 

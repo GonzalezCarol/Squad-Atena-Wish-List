@@ -1,9 +1,6 @@
 package com.squadatena.wishlist.controller;
 
 import com.squadatena.wishlist.entity.WishList;
-import com.squadatena.wishlist.model.Client;
-import com.squadatena.wishlist.model.Product;
-import com.squadatena.wishlist.model.WishList;
 import com.squadatena.wishlist.service.ClientService;
 import com.squadatena.wishlist.service.ProductService;
 import com.squadatena.wishlist.service.WishListService;
@@ -18,18 +15,18 @@ public class WishListController {
 
 
     @Autowired
-    private WishListService wishlistservice;
+    private WishListService wishlistService;
 
     @Autowired
     private ProductService productService;
 
     @Autowired
-    private ClientService clientservice;
+    private ClientService clientService;
 
     @GetMapping("/wishlist/{id_cliente}")
     public List<WishList> index(@PathVariable("id_cliente") Long id_cliente){
 //        Client client = clientservice.findById(id_cliente).get();
-        return wishlistservice.wishlistList(id_cliente); }
+        return wishlistService.wishlistList(id_cliente); }
 
 //    @PostMapping(value = "/save_wish_list/{id_cliente}")
 //    public WishList wishSave (@RequestBody Long id,@PathVariable("id_cliente") Long id_cliente){

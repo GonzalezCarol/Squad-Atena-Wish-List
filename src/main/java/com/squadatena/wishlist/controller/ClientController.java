@@ -1,39 +1,50 @@
 package com.squadatena.wishlist.controller;
 
-import com.squadatena.wishlist.model.Client;
+import com.squadatena.wishlist.entity.Client;
 import com.squadatena.wishlist.service.ClientService;
-import com.squadatena.wishlist.service.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.Optional;
 
+@RequestMapping("/client")
 @RestController
 
 public class ClientController {
 
-    public Long id_client;
-
-//    public Long getId_client() { return id_client; }
-//    public void setId_client(Long id_client) { this.id_client = id_client; }
-
-
     @Autowired
-    private ClientService clientservice;
-    private WishListService wishlistservice;
+    private ClientService clientService;
 
-    @GetMapping("/client")
+    // List the clients in the database
+    @GetMapping
     public List<Client> index(){
-        return clientservice.clientList();
+        return clientService.clientList();
     }
 
-    @GetMapping(value = "/client/{id}")
-    public Client findbyID(@PathVariable ("id") Long id) {
-        id_client = id;
-        return clientservice.findById(id).orElse(null); }
+    // List a client of a given id
+    @GetMapping(value = "/{id}")
+    public Optional<Client> selectByID(@PathVariable Long id) {
+        return clientService.searchById(id);
+    }
 
-    @PostMapping("/client")
+    // Add a client in the database
+    @PostMapping
     public Client addClient(@RequestBody Client client) {
-        clientservice.saveClient(client);
-        return client; }
+        clientService.saveClient(client);
+        return client;
+    }
+
+    // Update a client of a given id
+    @PutMapping(value = "/{id}")
+    public Client updateAClient (@PathVariable Long id, @RequestBody Client client){
+        Optional<Client> clientAfterSearch = clientService.searchById(id);
+            if (clientAfterSearch.isPresent()) {
+                client.setId(clientAfterSearch.get().getId());
+                return clientService.updateClient(client);
+            }
+            return null;
+        }
+
 }
+
+

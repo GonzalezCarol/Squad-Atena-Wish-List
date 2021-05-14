@@ -1,8 +1,6 @@
 package com.squadatena.wishlist.controller;
 
-import com.squadatena.wishlist.dto.ProductDTO;
-import com.squadatena.wishlist.mapper.ProductMapper;
-import com.squadatena.wishlist.model.Product;
+import com.squadatena.wishlist.entity.Product;
 import com.squadatena.wishlist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +14,6 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
-
-    @Autowired
-    ProductMapper productMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

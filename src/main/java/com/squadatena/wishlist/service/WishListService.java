@@ -1,10 +1,6 @@
 package com.squadatena.wishlist.service;
 
-import com.squadatena.wishlist.model.Client;
-import com.squadatena.wishlist.model.Product;
-import com.squadatena.wishlist.model.WishList;
-import com.squadatena.wishlist.repository.ClientRepository;
-import com.squadatena.wishlist.repository.ProductRepository;
+import com.squadatena.wishlist.entity.WishList;
 import com.squadatena.wishlist.repository.WishListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,20 +12,12 @@ import java.util.Locale;
 
 public class WishListService {
 
-    Client client;
-
     @Autowired
-    private WishListRepository wishlistrepository;
-
-    @Autowired
-    private ClientRepository clientrepository;
-
-    @Autowired
-    ProductRepository productRepository;
+    private WishListRepository wishListRepository;
 
 
     public List<WishList> wishlistList(Long id) {
-        return wishlistrepository.findByClientId(id); }
+        return wishListRepository.findByClientId(id); }
 
 //    public void saveProductWishList (WishList wishlist){
 //        wishlistrepository.save(wishlist);}
