@@ -17,16 +17,13 @@ public class Client implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    @NotNull
+    @Column(nullable=false)
     private String name;
 
-    @Column
-    @NotNull
+    @Column(nullable=false, length = 14)
     private String cpf;
 
-    @Column
-    @NotNull
+    @Column(nullable=false)
     private String address;
 
     public Long getId() { return id; }

@@ -1,6 +1,5 @@
 package com.squadatena.wishlist.entity;
 
-import com.sun.istack.NotNull;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -17,33 +16,25 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    @NotNull
+    @Column(nullable=false)
     private String name;
 
-    @Column
-    @NotNull
+    @Column(nullable=false)
     private String description;
 
-    @Column
-    @NotNull
+    @Column(nullable=false)
     private BigDecimal price;
 
-    @Column
-    @NotNull
-    private BigDecimal rate;
+    @Column(nullable=false)
+    private Double rate;
 
-    @Column
-    @NotNull
+    @Column(nullable=false)
     private String color;
 
-    @Column
-    @NotNull
-    private BigDecimal weight;
+    @Column(nullable=false)
+    private Double weight;
 
-    @Column
-    @NotNull
-    @Size(min = 0, max = 500)
+    @Column(nullable=false, length = 500)
     private String url;
 
     public Long getId() { return id; }
@@ -54,12 +45,12 @@ public class Product implements Serializable {
     public void setDescription(String description) { this.description = description; }
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
-    public BigDecimal getRate() { return rate; }
-    public void setRate(BigDecimal rate) { this.rate = rate; }
+    public Double getRate() { return rate; }
+    public void setRate(Double rate) { this.rate = rate; }
     public String getColor() { return color; }
     public void setColor(String color) { this.color = color; }
-    public BigDecimal getWeight() { return weight; }
-    public void setWeight(BigDecimal weight) { this.weight = weight; }
+    public Double getWeight() { return weight; }
+    public void setWeight(Double weight) { this.weight = weight; }
     public String getUrl() { return url; }
     public void setUrl(String url) { this.url = url; }
 }

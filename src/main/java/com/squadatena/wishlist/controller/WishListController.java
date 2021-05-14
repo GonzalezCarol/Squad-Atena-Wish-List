@@ -108,18 +108,12 @@ public class WishListController {
             for (Product pro : productList) {
                 if (pro.getName().toLowerCase(Locale.ROOT).contains(nameProduct.toLowerCase(Locale.ROOT))) {
                     return pro;
-
                 }
             }
         }
         return null;
     }
 }
-
-
-
-//        return null;
-
 
 
 
