@@ -21,7 +21,7 @@ public class ClientController {
         return clientService.clientList();
     }
 
-    // List a client of a given id
+    // Find a client of a given id
     @GetMapping(value = "/{id}")
     public Optional<Client> selectByID(@PathVariable Long id) {
         return clientService.searchById(id);
@@ -44,6 +44,13 @@ public class ClientController {
             }
             return null;
         }
+
+    // Count the number of clients in the database
+    @GetMapping("/getNumberOfClients")
+    public Long numberOfClients(){
+        return clientService.clientQuantity();
+    }
+
 
 }
 

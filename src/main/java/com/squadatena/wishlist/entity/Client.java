@@ -1,6 +1,7 @@
 package com.squadatena.wishlist.entity;
 
 import com.sun.istack.NotNull;
+import com.sun.istack.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
