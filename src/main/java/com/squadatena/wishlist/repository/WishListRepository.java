@@ -1,7 +1,7 @@
 package com.squadatena.wishlist.repository;
 
-import com.squadatena.wishlist.model.Client;
-import com.squadatena.wishlist.model.WishList;
+
+import com.squadatena.wishlist.entity.WishList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

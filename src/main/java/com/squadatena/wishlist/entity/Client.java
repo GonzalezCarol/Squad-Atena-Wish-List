@@ -1,14 +1,17 @@
-package com.squadatena.wishlist.model;
+package com.squadatena.wishlist.entity;
 
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "client")
 
-public class Client {
+public class Client implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +28,6 @@ public class Client {
     @Column
     @NotNull
     private String address;
-
-
 
     public Long getId() { return id; }
     public void setIdclient(Long id_client) { this.id = id; }

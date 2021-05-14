@@ -1,6 +1,7 @@
-package com.squadatena.wishlist.model;
+package com.squadatena.wishlist.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "wishlist")
@@ -15,13 +16,11 @@ public class WishList{
     @JoinColumn (name = "idclient")
     private Client client;
 
-    @OneToOne
-    @JoinColumn (name = "idproduct")
-    private Product product;
+    @OneToMany
+    private List<Product> products;
 
     public Client getClient() { return client; }
     public void setClient(Client client) { this.client = client; }
-    public Product getProduct() { return product; }
-    public void setProduct(Product product) { this.product = product; }
-
+    public List<Product> getProducts() { return products; }
+    public void setProducts(List<Product> products) { this.products = products; }
 }

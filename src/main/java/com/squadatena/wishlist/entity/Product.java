@@ -1,4 +1,4 @@
-package com.squadatena.wishlist.model;
+package com.squadatena.wishlist.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

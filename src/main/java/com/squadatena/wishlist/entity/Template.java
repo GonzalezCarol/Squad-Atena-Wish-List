@@ -1,8 +1,9 @@
-package com.squadatena.wishlist.model;
+package com.squadatena.wishlist.entity;
 
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -41,6 +42,7 @@ public class Template implements Serializable {
 
     @Column
     @NotNull
+    @Size(min = 0, max = 500)
     private String url;
 
     public Long getId() { return id; }

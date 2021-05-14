@@ -1,5 +1,6 @@
 package com.squadatena.wishlist.controller;
 
+import com.squadatena.wishlist.entity.WishList;
 import com.squadatena.wishlist.model.Client;
 import com.squadatena.wishlist.model.Product;
 import com.squadatena.wishlist.model.WishList;
