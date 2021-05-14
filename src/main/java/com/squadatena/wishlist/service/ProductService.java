@@ -16,25 +16,29 @@ public class ProductService{
     @Autowired
     ProductRepository productRepository;
 
-    public Product save(Product entity) { return productRepository.save(entity); }
+    public Product save(Product entity) {
+        return productRepository.save(entity);
+    }
 
     public List<Product> save(List<Product> entities) {
+
         return (List<Product>) productRepository.saveAll(entities);
     }
 
     public void deleteById(Long id) {
+
         productRepository.deleteById(id);
     }
 
     public Optional<Product> findById(Long id) {
+
         return productRepository.findById(id);
     }
 
     public List<Product> findAll() {
+
         return (List<Product>) productRepository.findAll();
     }
-
-
 
     public Product update(Product entity, Long id) {
         Optional<Product> optional = findById(id);
