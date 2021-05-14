@@ -21,15 +21,12 @@ public class WishListService {
     private WishListRepository wishListRepository;
 
     // Find a wishlist from a given client Id
-    public Optional<WishList> wishListById(Long id) {
-        return wishListRepository.findById(id);
+    public Optional<WishList> wishListByCId(Long id) {
+        return wishListRepository.findByClientId(id);
     }
 
     // Add a product in a given wishlist
-    public WishList addProduct(Client client, Product product) {
-
-        wishList.setClient(client);
-        wishList.getProducts().add(product);
+    public WishList addProduct(WishList wishList) {
 
         return wishListRepository.save(wishList);
     }

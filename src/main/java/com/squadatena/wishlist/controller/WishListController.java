@@ -19,7 +19,6 @@ import java.util.Optional;
 public class WishListController {
 
 
-
     @Autowired
     private WishListService wishlistService;
 
@@ -31,8 +30,8 @@ public class WishListController {
 
     // Find a wishlist from a given client Id
     @GetMapping("/{id_cliente}")
-    public Optional<WishList> index(@PathVariable Long id_cliente){
-        return wishlistService.wishListById(id_cliente);
+    public Optional<WishList> index(@PathVariable Long id_cliente) {
+        return wishlistService.wishListByCId(id_cliente);
     }
 
     @PostMapping("/add/{id_cliente}")
@@ -40,17 +39,31 @@ public class WishListController {
 
         Optional<Client> clientGivenId = clientService.searchById(id_cliente);
         Optional<Product> productGivenId = productService.findById(id_product);
-        Optional<WishList> wishListSearch = wishlistService.wishListById(id_cliente);
+        Optional<WishList> wishListSearch = wishlistService.wishListByCId(id_cliente);
 
-        List<Product> productToAdd = new ArrayList<Product>();
-        productToAdd.add(productGivenId.get());
+        if (wishListSearch.isPresent()) {
+            wishListSearch.get().setClient(clientGivenId.get());
+            wishListSearch.get().getProducts().add(productGivenId.get());
+            wishlistService.addProduct(wishListSearch.get());
 
-        WishList wishList = new WishList();
-        wishList.setClient(clientGivenId.get());
-        wishList.setProducts(productToAdd);
+            return wishListSearch.get();
 
-        return wishList;
+
+        } else {
+
+
+            WishList wishList = new WishList();
+            List<Product> productToAdd = new ArrayList<Product>();
+
+            productToAdd.add(productGivenId.get());
+            wishList.setClient(clientGivenId.get());
+            wishList.setProducts(productToAdd);
+            wishlistService.addProduct(wishList);
+            return wishList;
         }
+
+
+    }
 }
 
 

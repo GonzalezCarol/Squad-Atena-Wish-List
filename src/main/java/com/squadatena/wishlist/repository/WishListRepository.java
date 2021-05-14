@@ -9,13 +9,14 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 
 public interface WishListRepository extends JpaRepository<WishList,Long> {
 
 //    @Query(value = "select u from wishlist u where u.idclient = ?1")
-    List<WishList> findByClientId (Long id);
+    Optional<WishList> findByClientId (Long id);
 
 
 //
