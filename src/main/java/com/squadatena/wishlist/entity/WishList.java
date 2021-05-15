@@ -19,7 +19,12 @@ public class WishList{
     @JoinColumn (name = "idclient")
     private Client client;
 
-    @OneToMany
+//    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "productList",
+            joinColumns = @JoinColumn(name = "wishlist_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products;
 
     public Client getClient() { return client; }

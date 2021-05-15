@@ -36,12 +36,12 @@ public class WishListController {
 
     // Add a product in a given client wishlist
     @PostMapping("/add/{id_cliente}")
-    public ResponseEntity<WishList> addProductWishlist(@RequestBody Long id_product, @PathVariable Long id_cliente) {
+    public ResponseEntity<?> addProductWishlist(@RequestBody Long id_product, @PathVariable Long id_cliente) {
         try {
             WishList wishListAnwser = wishlistService.addProduct(id_cliente, id_product);
             return new ResponseEntity<>(wishListAnwser, HttpStatus.CREATED);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
 

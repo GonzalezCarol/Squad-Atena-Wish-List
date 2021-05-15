@@ -3,6 +3,7 @@ package com.squadatena.wishlist.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 //Create a table called product with 8 columns
 @Entity
@@ -15,6 +16,9 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToMany (mappedBy = "products")
+    private List<WishList> wishList;
 
     @Column(nullable=false)
     private String name;

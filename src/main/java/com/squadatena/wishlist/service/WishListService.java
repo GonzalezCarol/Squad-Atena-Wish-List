@@ -24,7 +24,7 @@ public class WishListService {
     private ClientRepository clientRepository;
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     // Find a wishlist by a given client Id
     public Optional<WishList> wishListByCId(Long id) {
@@ -32,7 +32,7 @@ public class WishListService {
     }
 
     // Add a product in a given client wishlist
-    public WishList addProduct(Long id_cliente, Long id_product) {
+    public WishList addProduct(Long id_cliente, Long id_product) throws Exception {
 
         Optional<Client> clientGivenId = clientRepository.findById(id_cliente);
         Optional<Product> productGivenId = productRepository.findById(id_product);
@@ -48,7 +48,8 @@ public class WishListService {
                 wishListRepository.save(wishListSearch.get());
                 return wishListSearch.get();
             } else {
-                return null;
+                throw new Exception("There is no client id");
+//                return null;
             }
 
             // Enter here if there is no wishlist for a given client
