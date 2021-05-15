@@ -30,7 +30,7 @@ public class WishListController {
         try {
             return new ResponseEntity<>(wishlistService.wishListByCId(id_cliente), HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
 
@@ -38,8 +38,8 @@ public class WishListController {
     @PostMapping("/add/{id_cliente}")
     public ResponseEntity<?> addProductWishlist(@RequestBody Long id_product, @PathVariable Long id_cliente) {
         try {
-            WishList wishListAnwser = wishlistService.addProduct(id_cliente, id_product);
-            return new ResponseEntity<>(wishListAnwser, HttpStatus.CREATED);
+            WishList wishListAnswer = wishlistService.addProduct(id_cliente, id_product);
+            return new ResponseEntity<>(wishListAnswer, HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
@@ -47,16 +47,25 @@ public class WishListController {
 
     // Delete a product in a given client wishlist
     @DeleteMapping("/delete/{id_cliente}")
-    public WishList deleteProductWishlist(@RequestBody Long id_product, @PathVariable Long id_cliente) {
-        return wishlistService.deleteProduct(id_cliente, id_product);
+    public ResponseEntity<?> deleteProductWishlist(@RequestBody Long id_product, @PathVariable Long id_cliente) {
+        try{
+            WishList wishListAnswer = wishlistService.deleteProduct(id_cliente, id_product);
+            return new ResponseEntity<>(wishListAnswer, HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
     }
 
     // Find a product in a given client wishlist by the product name
     @GetMapping("/find/{id_cliente}")
-    public Product findProductWishlist(@RequestBody String nameProduct, @PathVariable Long id_cliente) {
-        return wishlistService.productInAWishList(id_cliente,nameProduct);
+    public ResponseEntity<?> findProductWishlist(@RequestBody String nameProduct, @PathVariable Long id_cliente) {
+        try{
+            Product productAnswer = wishlistService.productInAWishList(id_cliente,nameProduct);
+            return new ResponseEntity<>(productAnswer, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+        }
     }
-
 }
 
 
