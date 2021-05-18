@@ -33,7 +33,6 @@ ClientService clientService;
         client.setCpf("07249755609");
         client.setAddress("Rua Ovideo Bradamante Toledo");
 
-
         //Quando cliente for salvo
         Client saveClient = clientService.saveClient(client);
 
