@@ -18,7 +18,7 @@ import java.util.Optional;
 @Transactional
 @RunWith(SpringRunner.class)
 
-public class ClientControllerTest {
+public class ClientServiceTest {
 
 @Autowired
 ClientService clientService;
