@@ -1,11 +1,14 @@
 package com.squadatena.wishlist.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 /* Create a table called wishlist with 3 columns where client has a relation one to one with the table clients and products
 has a relation one to many with the table products */
 
+@Data
 @Entity
 @Table(name = "wishlist")
 
@@ -26,9 +29,6 @@ public class WishList{
             joinColumns = @JoinColumn(name = "wishlist_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products;
-
-    public Client getClient() { return client; }
-    public void setClient(Client client) { this.client = client; }
     public List<Product> getProducts() { return products; }
-    public void setProducts(List<Product> products) { this.products = products; }
+
 }
