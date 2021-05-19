@@ -28,7 +28,7 @@ import io.swagger.annotations.Authorization;
 
 @RestController
 @RequestMapping("/api")
-@Api(tags = "users")
+@Api(tags = "api")
 public class UserController {
 
     @Autowired
