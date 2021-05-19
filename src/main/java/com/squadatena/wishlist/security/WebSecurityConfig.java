@@ -32,8 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Entry points
         http.authorizeRequests()//
-                .antMatchers("/users/signin").permitAll()//
-                .antMatchers("/users/signup").permitAll()//
+                .antMatchers("/api/signin").permitAll()//
+                .antMatchers("/api/signup").permitAll()//
                 .antMatchers("/h2-console/**/**").permitAll()
                 // Disallow everything else..
                 .anyRequest().authenticated();
@@ -53,15 +53,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Allow swagger to be accessed without authentication
         web.ignoring().antMatchers("/v2/api-docs")//
                 .antMatchers("/swagger-resources/**")//
-                .antMatchers("/swagger-ui.html")//
+                .antMatchers("/swagger-ui.html")
+                .antMatchers("/v3/api-docs")//
+                .antMatchers("/swagger-ui")//
+                .antMatchers("/swagger")//
+                .antMatchers("/swagger.json")
                 .antMatchers("/configuration/**")//
                 .antMatchers("/webjars/**")//
                 .antMatchers("/public")
+                .antMatchers("/configuration/security")
 
                 // Un-secure H2 Database (for testing purposes, H2 console shouldn't be unprotected in production)
                 .and()
                 .ignoring()
-                .antMatchers("/h2-console/**/**");;
+                .antMatchers("/h2-console/**/**");
     }
 
     @Bean
