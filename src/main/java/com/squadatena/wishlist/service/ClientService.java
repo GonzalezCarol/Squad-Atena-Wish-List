@@ -34,8 +34,4 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    // Count how many clients were added in the database
-    public Long clientQuantity() {
-        return clientRepository.count();
-    }
 }
