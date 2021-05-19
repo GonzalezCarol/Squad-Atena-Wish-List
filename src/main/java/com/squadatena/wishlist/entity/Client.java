@@ -1,9 +1,11 @@
 package com.squadatena.wishlist.entity;
 
+import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
 //Create a table called client with 4 columns
+@Data
 @Entity
 @Table(name = "client")
 
@@ -24,12 +26,4 @@ public class Client implements Serializable {
     @Column(nullable=false)
     private String address;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getCpf() { return cpf; }
-    public void setCpf(String cpf) { this.cpf = cpf; }
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
 }
