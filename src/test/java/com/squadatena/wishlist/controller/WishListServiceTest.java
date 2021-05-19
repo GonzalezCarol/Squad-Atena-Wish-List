@@ -11,18 +11,15 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.transaction.Transactional;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
+//import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-
+@Transactional
 @RunWith(SpringRunner.class)
 
 public class WishListServiceTest {
@@ -37,7 +34,6 @@ public class WishListServiceTest {
     ProductService productService;
 
     //Save Client
-    @Transactional
     @Test
     public void addWishList() throws Exception {
 
@@ -59,13 +55,12 @@ public class WishListServiceTest {
         product.setWeight(10.6);
         Product saveProduct = productService.save(product);
 
-        WishList wishList = wishListService.addProduct(1L, 1L);
+        WishList wishList = wishListService.addProduct(saveClient.getId(), saveProduct.getId());
 
         assertThat(wishList.getClient()).isEqualTo(saveClient);
         assertThat(wishList.getProducts().get(0)).isEqualTo(saveProduct);
     }
 
-    @Transactional
     @Test
     public void findWishListByCId() throws Exception {
 
@@ -87,14 +82,13 @@ public class WishListServiceTest {
         product.setWeight(10.6);
         Product saveProduct = productService.save(product);
 
-        WishList wishList = wishListService.addProduct(1L, 1L);
+        WishList wishList = wishListService.addProduct(saveClient.getId(), saveProduct.getId());
 
-        Optional<WishList> wishList1 = wishListService.wishListByCId(1L);
+        Optional<WishList> wishList1 = wishListService.wishListByCId(saveClient.getId());
 
         assertThat(wishList1.get().getClient().getId()).isEqualTo(wishList.getClient().getId());
     }
 
-    @Transactional
     @Test
     public void deleteWishList() throws Exception {
 
@@ -116,14 +110,13 @@ public class WishListServiceTest {
         product.setWeight(10.6);
         Product saveProduct = productService.save(product);
 
-        WishList wishList = wishListService.addProduct(1L, 1L);
+        WishList wishList = wishListService.addProduct(saveClient.getId(), saveProduct.getId());
 
-        WishList wishList1 = wishListService.deleteProduct(1L,1L);
+        WishList wishList1 = wishListService.deleteProduct(saveClient.getId(), saveProduct.getId());
 
         assertThat(wishList1.getProducts()).isEmpty();
     }
 
-    @Transactional
     @Test
     public void findByName() throws Exception {
 
@@ -145,9 +138,9 @@ public class WishListServiceTest {
         product.setWeight(10.6);
         Product saveProduct = productService.save(product);
 
-        WishList wishList = wishListService.addProduct(1L, 1L);
+        WishList wishList = wishListService.addProduct(saveClient.getId(), saveProduct.getId());
 
-        Product product1 = wishListService.productInAWishList(1L,"ancy");
+        Product product1 = wishListService.productInAWishList(saveClient.getId(),"ancy");
 
         assertThat(product1.getName()).isEqualTo("Skate Fancy");
     }

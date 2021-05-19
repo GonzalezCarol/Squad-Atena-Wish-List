@@ -39,17 +39,26 @@ ClientService clientService;
         //Resultado não é vazio
         assertThat(saveClient).isNotNull();
         assertThat(saveClient.getId()).isNotNull();
-        assertThat(saveClient.getId()).isEqualTo(1);
+        assertThat(saveClient.getName()).isEqualTo("Poliana Pereira Andrade");
+        assertThat(saveClient.getAddress()).isEqualTo("Rua Ovideo Bradamante Toledo");
+        assertThat(saveClient.getCpf()).isEqualTo("07249755609");
     }
 
     //Buscar lista de clientes
     @Test
     public void getClientID(){
 
+        Client client = new Client();
+        client.setName("Poliana Pereira Andrade");
+        client.setCpf("07249755609");
+        client.setAddress("Rua Ovideo Bradamante Toledo");
+
+        Client saveClient = clientService.saveClient(client);
+
         List<Client> list = clientService.clientList();
 
         //Resultado retornar uma lista de cliente
-        assertThat(clientService.clientList()).isEqualTo(list);
+        assertThat(list.contains(saveClient)).isTrue();
 
     }
 
@@ -57,14 +66,36 @@ ClientService clientService;
     @Test
     public void searchClientByID(){
 
-        //Quando cliente for salvo
-        Optional<Client> searchClient = clientService.searchById(1L);
+        Client client = new Client();
+        client.setName("Poliana Pereira Andrade");
+        client.setCpf("07249755609");
+        client.setAddress("Rua Ovideo Bradamante Toledo");
 
-            if (searchClient.isPresent()) {
+        Client saveClient = clientService.saveClient(client);
+        Optional<Client> foundClient = clientService.searchById(client.getId());
 
-                //Resultado retornar uma lista de cliente
-                assertThat(clientService.searchById(1L)).isEqualTo(searchClient);
-            }
+        assertThat(foundClient.get()).isEqualTo(client);
+    }
+
+    //Buscar o cliente dado um id
+    @Test
+    public void updateClientByID(){
+
+        Client client = new Client();
+        client.setName("Poliana Pereira Andrade");
+        client.setCpf("07249755609");
+        client.setAddress("Rua Ovideo Bradamante Toledo");
+
+        Client saveClient = clientService.saveClient(client);
+
+        Client client1 = new Client();
+        client1.setName("Maria");
+        client1.setCpf("07249755609");
+        client1.setAddress("Rua Ovideo Bradamante Toledo");
+
+        Client saveClient1 = clientService.updateClient(client1);
+
+        assertThat(saveClient1.getName()).isEqualTo("Maria");
     }
 }
 

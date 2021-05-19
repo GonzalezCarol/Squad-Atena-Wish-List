@@ -45,12 +45,6 @@ public class ClientController {
             return null;
         }
 
-    // Count the number of clients in the database
-    @GetMapping("/client/getNumberOfClients")
-    public Long numberOfClients(){
-        return clientService.clientQuantity();
-    }
-
 }
 
 
