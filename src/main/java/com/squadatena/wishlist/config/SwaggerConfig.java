@@ -50,10 +50,7 @@ public class SwaggerConfig {
                 .description("This is a wishlist api with a sample JWT authentication service. You can find out more about JWT at [https://jwt.io/](https://jwt.io/). For this sample, you can use the `admin` or `client` users (password: admin and client respectively) to test the authorization filters. Once you have successfully logged in and obtained the token, you should click on the right top button `Authorize` and introduce it with the prefix \"Bearer \".")//
                 .version("1.0.0")//
                 .license("MIT License").licenseUrl("http://opensource.org/licenses/MIT")//
-                .contact(new Contact("Carolina Gonzalez", "", "carolina.gonzalez.alvarenga@gmail.com"))//
-                .contact(new Contact("Poliana Andrade", "", "polianapa@hotmail.com"))
-                .contact(new Contact("Isabela Melvilhe", "", "isabelazanymelvilhe@gmail.com"))
-                .contact(new Contact("Silvia Pedrosa", "", "silviapalves@yahoo.com.br"))
+                .contact(new Contact("Squad Atena", "", ""))//
                 .build();
     }
 
