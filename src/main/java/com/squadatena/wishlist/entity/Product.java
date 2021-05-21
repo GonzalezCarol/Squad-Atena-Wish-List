@@ -1,5 +1,8 @@
 package com.squadatena.wishlist.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,6 +16,8 @@ import java.util.List;
 @Entity
 @Table(name = "product")
 
+@JsonSerialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,6 +26,7 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToMany (mappedBy = "products")
     private List<WishList> wishList;
 
