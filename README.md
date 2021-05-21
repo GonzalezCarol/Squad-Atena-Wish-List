@@ -27,17 +27,5 @@ $ http://localhost:8080/api/signin?username=admin&password=admin
 Add the JWT token as a Header parameter and make the initial GET request to /users/me again
 $ http://localhost:8080/api/products  with 'Authorization: Bearer <JWT_TOKEN>'
 
-The app defines following CRUD APIs.
 
-GET /wishlist
-
-GET /wishlist/{id}
-
-POST /wishlist
-
-PUT /wishlist/{id}
-
-DELETE /wishlist/{id}
-
-
-You can test them using insomninia or any other rest client.
+You can test them using insomninia, swagger or any other rest client.
