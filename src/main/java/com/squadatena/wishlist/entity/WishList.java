@@ -1,5 +1,6 @@
 package com.squadatena.wishlist.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ has a relation one to many with the table products */
 @Entity
 @Table(name = "wishlist")
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WishList{
 
     @Id
@@ -27,8 +29,10 @@ public class WishList{
     @JoinTable(
             name = "productList",
             joinColumns = @JoinColumn(name = "wishlist_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
     private List<Product> products;
-    public List<Product> getProducts() { return products; }
+    public List<Product> getProducts() {
+        return products;
+    }
 
 }

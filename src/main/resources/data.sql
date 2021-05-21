@@ -1,3 +1,4 @@
+
 INSERT INTO product (color,description,name,price,rate,weight,url) VALUES
 ('Rosa','Skate Wood Light Basico Rosa','Skate Wood Light Basico Rosa','219.90','10.90','0.3','https://t-static.dafiti.com.br/nQEEI8nD2ZH2Wv15BK-8LElJwh4=/fit-in/430x623/static.dafiti.com.br/p/dng-skateboards-skate-completo-dng-profissional-ice-cream-rosa--3623-6239723-1-zoom.jpg'),
 ('Bege','Tênis Nike Charge Canvas Bege','Tênis Nike Charge Canvas Bege','169.90','8.45','0.5','https://static.dafiti.com.br/p/Nike-T%C3%AAnis-Nike-Charge-Canvas-Bege-5484-7985106-1-zoom.jpg'),
@@ -23,3 +24,4 @@ INSERT INTO client (name,cpf,address) values
 ('Poliana Maria','111.111.111-01','Girassol Avenue, 111, São Paulo, Brazil'),
 ('Izabela Pacheco','222.222.222-02','Rosa Avenue, 222, Rio Claro, Brazil'),
 ('Carolina Gonçalves','333.333.333-03','Avenca Avenue, 333, Rio de Janeiro, Brazil')
+
