@@ -1,5 +1,7 @@
 # Squad-Atena-Wish-List
 
+Wishlist Project with Java Spring boot, Lombok, Spring Sercurity, JWT and Swagger
+
 ## Requirements Backend
 Java - 1.8.x
 
